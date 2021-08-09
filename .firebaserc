@@ -1,0 +1,21 @@
+{
+  "targets": {
+    "papx-ws-dev": {
+      "hosting": {
+        "app": [
+          "papws-admin-dev"
+        ]
+      }
+    },
+    "papx-ws-prod": {
+      "hosting": {
+        "app": [
+          "papws-admin"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "prod": "papx-ws-prod"
+  }
+}

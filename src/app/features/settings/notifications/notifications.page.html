@@ -1,0 +1,49 @@
+<ng-container *ngIf="vm$ | async as vm">
+  <ion-header>
+    <ion-toolbar color="tertiary">
+      <ion-buttons slot="start">
+        <ion-back-button defaultHref="/settings"></ion-back-button>
+      </ion-buttons>
+      <ion-title>Notificaciones</ion-title>
+      <ion-buttons slot="end">
+        <ion-button>
+          <ion-icon
+            slot="icon-only"
+            [name]="vm.token ? 'notifications': 'notifications-off'"
+          ></ion-icon>
+        </ion-button>
+      </ion-buttons>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-content class="ion-padding">
+    <ion-list-header>
+      <ion-label color="secondary">
+        <h1>Tópicos disponibles</h1>
+      </ion-label>
+      <ion-button color="primary" (click)="autorizar(vm.user)">
+        Autorizar dispositivo
+      </ion-button>
+    </ion-list-header>
+    <ion-list>
+      <ion-item-sliding>
+        <ion-item-options slot="end">
+          <ion-item-option>
+            <ion-label>Cancelar</ion-label>
+            <ion-icon name="close" slot="bottom"></ion-icon>
+          </ion-item-option>
+        </ion-item-options>
+        <ion-item>
+          <ion-label class="ion-text-wrap">
+            <h1>Autorizaciones de solicitudes</h1>
+            <p>Notifiación por cada solicitud de depósito autorizada</p>
+          </ion-label>
+          <ion-button fill="clear" slot="end">
+            <ion-label> Suscribirse </ion-label>
+            <ion-icon name="checkmark" slot="start"></ion-icon>
+          </ion-button>
+        </ion-item>
+      </ion-item-sliding>
+    </ion-list>
+  </ion-content>
+</ng-container>

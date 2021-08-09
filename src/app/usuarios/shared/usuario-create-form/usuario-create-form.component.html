@@ -1,0 +1,84 @@
+<form [formGroup]="form">
+  <ion-grid>
+    <ion-row>
+      <ion-col class="ion-align-self-center">
+        <ion-item>
+          <ion-label position="floating">Email</ion-label>
+          <ion-input
+            placeholder="Cuenta de correo electrónico"
+            formControlName="email"
+          ></ion-input>
+          <ion-icon
+            slot="start"
+            name="mail"
+            [color]="validColor('email')"
+          ></ion-icon>
+        </ion-item>
+        <ion-note *ngIf="hasEmailError()" [color]="errorColor">
+          <p class="error-section">Cuenta de correo inválida</p>
+        </ion-note>
+      </ion-col>
+      <ion-col>
+        <ion-item>
+          <ion-label position="floating">Usuario</ion-label>
+          <ion-input
+            placeholder="Nombre de usuario"
+            formControlName="displayName"
+          ></ion-input>
+          <ion-icon
+            slot="start"
+            name="person"
+            [color]="validColor('displayName')"
+          ></ion-icon>
+        </ion-item>
+        <ion-note *ngIf="displayNameError()" [color]="errorColor">
+          <p class="error-section">{{ displayNameError() }}</p>
+        </ion-note>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col>
+        <ion-item>
+          <ion-label position="floating">Nombre</ion-label>
+          <ion-input
+            placeholder="Nombre completo"
+            formControlName="nombre"
+          ></ion-input>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <ion-item>
+          <ion-label position="floating">Número de empleado</ion-label>
+          <ion-input
+            placeholder="Numero de empleado"
+            formControlName="numeroDeEmpleado"
+          ></ion-input>
+        </ion-item>
+      </ion-col>
+      <ion-col>
+        <ion-item>
+          <ion-label position="floating">Puesto</ion-label>
+          <ion-input placeholder="Puesto" formControlName="puesto"></ion-input>
+        </ion-item>
+      </ion-col>
+      <ion-col>
+        <papx-sucursal-name-control
+          formControlName="sucursal"
+        ></papx-sucursal-name-control>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  <div class="actions">
+    <ion-button
+      color="primary"
+      [disabled]="form.invalid || form.pristine"
+      (click)="submit()"
+    >
+      <ion-icon name="save" slot="start"></ion-icon>
+      <ion-label>Salvar</ion-label>
+    </ion-button>
+  </div>
+</form>

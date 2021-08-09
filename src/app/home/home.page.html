@@ -1,0 +1,35 @@
+<ion-header [translucent]="true">
+  <ion-toolbar color="tertiary">
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title> SX-CLOUD-ADMIN</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ng-container *ngIf="user$ | async as user">
+  <ion-content>
+    <ion-grid>
+      <ion-row>
+        <ion-col
+          size-sm="12"
+          size-md="8"
+          offset-md="2"
+          size-lg="6"
+          offset-lg="3"
+        >
+          <div class="container">
+            <papx-welcome
+              [displayName]="user.displayName"
+              [lastAccess]="user.lastSignInTime"
+            ></papx-welcome>
+          </div>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-content>
+  <ion-footer class="ion-no-border">
+    <ion-toolbar>
+      <ion-title size="small"> Developed by: LuxsoftNet </ion-title>
+    </ion-toolbar>
+  </ion-footer>
+</ng-container>

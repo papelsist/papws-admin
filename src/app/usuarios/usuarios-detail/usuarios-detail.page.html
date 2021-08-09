@@ -1,0 +1,34 @@
+<ng-container *ngIf="user$ | async as user">
+  <ion-header>
+    <ion-toolbar>
+      <ion-buttons slot="start">
+        <ion-back-button defaultHref="usuarios"></ion-back-button>
+        <ion-icon name="person"></ion-icon>
+      </ion-buttons>
+      <ion-title> {{user.displayName}} </ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-content>
+    <papx-usuario-form
+      *ngIf="adminUser$ | async as adminUser"
+      [usuario]="user"
+      (save)="onSave(user, $event, adminUser)"
+    ></papx-usuario-form>
+
+    <papx-usuarios-roles
+      *ngIf="credentials$ | async as cred"
+      [credentials]="cred.customClaims"
+      (update)="onUpdateRoles(user, $event)"
+    ></papx-usuarios-roles>
+  </ion-content>
+  <ion-footer>
+    <ion-toolbar>
+      <ion-buttons slot="end">
+        <papx-change-password
+          (changeValue)="onUpdatePassword(user, $event)"
+        ></papx-change-password>
+      </ion-buttons>
+    </ion-toolbar>
+  </ion-footer>
+</ng-container>
